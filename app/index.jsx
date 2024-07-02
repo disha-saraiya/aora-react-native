@@ -1,9 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import { ScrollView, Text, View, Image } from 'react-native';
-import { router } from 'expo-router';
+import { Redirect, router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { images } from '../constants';
 import CustomButton from '../components/custom-button';
+import { useGlobalContext } from '../context/GlobalProvider';
 
 /* 
 This is the onboarding page. 
@@ -17,6 +18,9 @@ StatusBar: decides whether you want to show or hide your phone's top status bar 
 View: equivalent to a <div>
 */
 export default function App() {
+  const { loading, isLoggedIn } = useGlobalContext();
+
+  if (!loading && isLoggedIn) return <Redirect href="/home" />;
   return (
     <SafeAreaView className="bg-primary h-full">
       <ScrollView contentContainerStyle={{ height: '100%' }}>
