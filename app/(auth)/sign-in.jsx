@@ -8,6 +8,7 @@ import CustomButton from '../../components/custom-button';
 import { Link } from 'expo-router';
 import { signIn } from '../../lib/appwrite';
 import { useGlobalContext } from '../../context/GlobalProvider';
+import { router } from 'expo-router';
 
 const SignInScreen = () => {
   //React useState hook
